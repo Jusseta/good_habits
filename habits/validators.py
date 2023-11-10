@@ -24,9 +24,10 @@ class DurationValidator:
 
     def __call__(self, value):
         duration = dict(value).get(self.duration)
-        if duration is not None:
-            if int(duration) > 120:
-                raise ValidationError('Время выполнения должно быть не больше 120 секунд')
+        if duration is None:
+            duration = 120
+        if duration > 120:
+            raise ValidationError('Время выполнения должно быть не больше 120 секунд')
 
 
 class RelatedHabitValidator:
@@ -63,6 +64,9 @@ class FrequencyValidator:
 
     def __call__(self, value):
         frequency = dict(value).get(self.frequency)
+        if frequency is None:
+            frequency = 24
+
         if frequency > 168:
             raise ValidationError('Нельзя выполнять привычку реже, чем 1 раз в 7 дней.')
 
