@@ -7,8 +7,7 @@ NULLABLE = {'blank': True, 'null': True}
 
 class User(AbstractUser):
     """Модель пользователя"""
-    username = None
-    name = models.CharField(max_length=255, verbose_name='имя')
+    username = models.CharField(max_length=255, verbose_name='имя')
     phone = models.CharField(unique=True, max_length=20, verbose_name='телефон')
     chat_id = models.CharField(unique=True, max_length=20, verbose_name='id чата')
 

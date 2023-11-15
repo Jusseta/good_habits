@@ -4,6 +4,7 @@ from users.models import NULLABLE
 
 
 class Habit(models.Model):
+    """Модель привычки"""
     owner = models.ForeignKey(User, on_delete=models.SET_NULL, verbose_name="владелец", **NULLABLE)
     place = models.CharField(max_length=100, verbose_name="место")
     time = models.TimeField(verbose_name="время")
