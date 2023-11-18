@@ -1,4 +1,3 @@
-from datetime import datetime, timedelta
 from django_celery_beat.models import IntervalSchedule, PeriodicTask
 
 
