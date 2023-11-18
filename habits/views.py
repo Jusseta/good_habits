@@ -5,7 +5,6 @@ from habits.paginators import HabitsPaginator
 from habits.permissions import IsOwner
 from habits.serializers import HabitSerializer
 from habits.servicies import create_schedule
-from habits.tasks import send_notification
 
 
 class HabitViewSet(viewsets.ModelViewSet):
@@ -20,7 +19,15 @@ class HabitViewSet(viewsets.ModelViewSet):
         new_habit.owner = self.request.user
         new_habit.save()
 
-        create_schedule(new_habit.frequency, new_habit.action, new_habit.time)
+        create_schedule(new_habit)
+
+    def perform_update(self, serializer):
+        """Запись владельца привычки"""
+        updated_habit = serializer.save()
+        updated_habit.owner = self.request.user
+        updated_habit.save()
+
+        create_schedule(updated_habit)
 
     def get_queryset(self):
         """Вывод привычек данного пользователя"""

@@ -15,6 +15,3 @@ urlpatterns = [
     path('public_habits/', PublicHabitListAPIView.as_view(), name='public_habits'),
 
 ] + router_habit.urls
-
-
-
