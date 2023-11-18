@@ -20,8 +20,7 @@ class HabitViewSet(viewsets.ModelViewSet):
         new_habit.owner = self.request.user
         new_habit.save()
 
-        create_schedule(new_habit.frequency, new_habit.action)
-        send_notification.delay()
+        create_schedule(new_habit.frequency, new_habit.action, new_habit.time)
 
     def get_queryset(self):
         """Вывод привычек данного пользователя"""
@@ -34,6 +33,7 @@ class PublicHabitListAPIView(generics.ListAPIView):
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
     permission_classes = [IsAuthenticated]
+    pagination_class = HabitsPaginator
 
     def get_queryset(self):
         """Вывод привычек, у которых положительный признак публичности"""
