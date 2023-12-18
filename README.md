@@ -7,12 +7,7 @@
 
 - Установить виртуальное окружение.
 - Установить Redis на компьютер.
-- Установить зависимости из 'requirements.txt'.
-- Применить все миграции командой `python manage.py migrate`.
 - Создать и заполнить файл '.env' по примеру из '.env.sample'.
-- Запустить приложение можно с помощью команды 'python manage.py runserver'.
-- Запуск отложенных задач командой 'celery -A config worker -l INFO -P eventlet'.
-- Запуск периодических задач 'celery -A config beat -l INFO -S django'.
-
+- Собрать и запустить контейнер 'docker-compose up --build'.
   
 *Суперпользователя можно создать командой `python manage.py csu`.

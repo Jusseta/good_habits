@@ -5,8 +5,8 @@ from users.models import User
 class Command(BaseCommand):
     def handle(self, *args, **options):
         user = User.objects.create(
-            phone=89242495800,
-            username='Victoria',
+            phone=89242424242,
+            username='User',
             chat_id=449665847,
             is_staff=True,
             is_superuser=True,
